@@ -36,14 +36,7 @@
 </head>
 
 <body class="bg-black text-white font-sans">
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-700/30 px-6 py-4 flex justify-center space-x-10">
-    <a href="#home" class="neon-text text-blue-400">Home</a>
-    <a href="#about" class="neon-text text-pink-400">About</a>
-    <a href="#how-it-works" class="neon-text text-purple-400">How It Works</a>
-    <a href="#contact" class="neon-text text-blue-400">Contact</a>
-  </nav>
-
-  <section id="home" class="pt-32 pb-10 px-6 text-center">
+  <section class="pt-32 pb-10 px-6 text-center">
     <h1 class="text-6xl md:text-8xl font-extrabold mb-6 neon-glow">1500 Pixels</h1>
     <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300">
       A digital canvas where every pixel can be owned, displayed, and shared. Inspired by the Million Dollar Homepage.
@@ -67,70 +60,21 @@
     </div>
   </section>
 
-  <section id="about" class="py-20 px-6 bg-black">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6 neon-text">What is 1500 Pixels?</h2>
-      <p class="text-lg text-gray-300 leading-relaxed">
-        Inspired by the iconic Million Dollar Homepage, 1500 Pixels offers a limited edition canvas where each pixel can be bought, claimed, and customized. This minimal yet powerful concept is perfect for branding, marketing, or just being part of something unique and viral.
-      </p>
-    </div>
-  </section>
-
-  <section id="how-it-works" class="py-20 px-6 bg-black">
-    <h2 class="text-4xl font-bold text-center mb-12 neon-text">How It Works</h2>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-10 text-center">
-      <div class="bg-black border border-purple-800/30 p-6 rounded-lg shadow-lg hover:shadow-purple-500/20 transition-shadow">
-        <div class="text-5xl font-bold text-purple-400 mb-4">1</div>
-        <h3 class="text-xl font-semibold mb-2 text-white">Choose Your Pixel</h3>
-        <p class="text-gray-400">Browse the live grid and select an available pixel.</p>
-      </div>
-      <div class="bg-black border border-purple-800/30 p-6 rounded-lg shadow-lg hover:shadow-purple-500/20 transition-shadow">
-        <div class="text-5xl font-bold text-purple-400 mb-4">2</div>
-        <h3 class="text-xl font-semibold mb-2 text-white">Customize & Claim</h3>
-        <p class="text-gray-400">Upload your logo, link, or message to make it yours.</p>
-      </div>
-      <div class="bg-black border border-purple-800/30 p-6 rounded-lg shadow-lg hover:shadow-purple-500/20 transition-shadow">
-        <div class="text-5xl font-bold text-purple-400 mb-4">3</div>
-        <h3 class="text-xl font-semibold mb-2 text-white">Go Viral</h3>
-        <p class="text-gray-400">Share your pixel and watch the hype grow!</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-20 px-6 bg-black">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6 neon-text">Get in Touch</h2>
-      <p class="text-gray-300 mb-8">
-        Have questions, ideas, or want to collaborate? We'd love to hear from you.
-      </p>
-      <a
-        href="mailto:hello@1000pixels.com"
-        class="inline-block px-6 py-3 bg-purple-700 hover:bg-purple-600 rounded-full font-semibold transition-colors"
-      >
-        hello@1000pixels.com
-      </a>
-    </div>
-  </section>
-
-  <footer class="py-6 border-t border-purple-700/30 text-center text-sm text-gray-500">
-    © <span id="year"></span> 1500 Pixels — All rights reserved.
-  </footer>
-
   <script>
-    document.getElementById("year").innerText = new Date().getFullYear();
-    const pixelGrid = document.getElementById("pixelGrid");
+    const viewer = document.getElementById("viewerCount");
+    function updateViewerCount() {
+      const count = Math.floor(Math.random() * (17000 - 12500 + 1)) + 12500;
+      viewer.innerText = `🔥 Live Viewers: ${count.toLocaleString()}`;
+    }
+    setInterval(updateViewerCount, 4000);
+    updateViewerCount();
 
+    const pixelGrid = document.getElementById("pixelGrid");
     const customers = [
       { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
       { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
       { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
-      { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" },
-      { logo: "https://logo.clearbit.com/notion.so", url: "https://notion.so" },
-      { logo: "https://logo.clearbit.com/moz.com", url: "https://moz.com" },
-      { logo: "https://logo.clearbit.com/activecampaign.com", url: "https://activecampaign.com" },
-      { logo: "https://logo.clearbit.com/typeform.com", url: "https://typeform.com" },
-      { logo: "https://logo.clearbit.com/calendly.com", url: "https://calendly.com" },
-      { logo: "https://logo.clearbit.com/sendinblue.com", url: "https://sendinblue.com" }
+      { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" }
     ];
 
     for (let i = 0; i < 1500; i++) {
@@ -141,19 +85,11 @@
         const customer = customers[Math.floor(Math.random() * customers.length)];
         pixel.innerHTML = `<a href="${customer.url}" target="_blank" rel="noopener noreferrer" class="block w-full h-full glow hover:scale-110 transition-transform"><img src="${customer.logo}" alt="Logo" class="w-full h-full object-contain" /></a>`;
       } else {
-        pixel.innerHTML = `<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>`;
+        pixel.innerHTML = '<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>';
       }
 
       pixelGrid.appendChild(pixel);
     }
-
-    const viewer = document.getElementById("viewerCount");
-    function updateViewerCount() {
-      const count = Math.floor(Math.random() * (17000 - 12500 + 1)) + 12500;
-      viewer.innerText = `🔥 Live Viewers: ${count.toLocaleString()}`;
-    }
-    setInterval(updateViewerCount, 4000);
-    updateViewerCount();
   </script>
 </body>
 </html>
