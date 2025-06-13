@@ -6,102 +6,130 @@
   <title>1500 Pixels - Return of Million Dollar Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
     .neon-glow {
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
       animation: flicker 2s infinite alternate ease-in-out;
     }
+
     .neon-text {
       color: #00ffff;
       text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
     }
+
     .glow {
       box-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(255, 0, 255, 0.3);
     }
+
     .grid-cols-30 {
       display: grid;
-      grid-template-columns: repeat(30, minmax(0, 1fr));
+      grid-template-columns: repeat(30, 1fr);
     }
+
+    .pixel {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+    }
+
+    .pixel-inner {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     @media (max-width: 1024px) {
       .grid-cols-30 {
-        grid-template-columns: repeat(15, minmax(0, 1fr));
+        grid-template-columns: repeat(15, 1fr);
       }
     }
+
     @media (max-width: 640px) {
       .grid-cols-30 {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(6, 1fr);
       }
     }
   </style>
 </head>
 
 <body class="bg-black text-white font-sans">
-  <section class="pt-32 pb-10 px-6 text-center">
-    <h1 class="text-6xl md:text-8xl font-extrabold mb-6 neon-glow">1500 Pixels</h1>
-    <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300">
+  <section class="pt-20 pb-10 px-6 text-center">
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-6 neon-glow">1500 Pixels</h1>
+    <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
       A digital canvas where every pixel can be owned, displayed, and shared. Inspired by the Million Dollar Homepage.
     </p>
     <a
       href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage"
       target="_blank"
-      class="inline-block mt-10 px-8 py-4 bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-purple-500/30"
+      class="inline-block mt-8 px-6 py-3 bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 rounded-full font-bold text-md hover:scale-105 transition-transform shadow-lg shadow-purple-500/30"
     >
       Buy a Pixel
     </a>
-    <div id="viewerCount" class="text-center text-sm text-purple-400 mt-4"></div>
+    <div id="viewerCount" class="text-center text-sm text-purple-400 mt-3"></div>
   </section>
 
-  <section class="py-20 px-4 bg-black">
-    <h2 class="text-4xl font-bold text-center mb-10 neon-text">The 1500 Pixels Canvas</h2>
-    <div id="pixelGrid" class="max-w-6xl mx-auto grid-cols-30 gap-px overflow-hidden"></div>
-    <div class="mt-8 text-center text-sm text-gray-400">
-      <span class="inline-block w-3 h-3 mr-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500"></span> Available •
-      <span class="inline-block w-3 h-3 ml-2 mr-2 rounded-full bg-red-500"></span> Sold | Click to visit brand
-    </div>
+  <section class="px-2 bg-black">
+    <h2 class="text-3xl font-bold text-center mb-6 neon-text">The 1500 Pixel Canvas</h2>
+    <div id="pixelGrid" class="grid-cols-30 max-w-6xl mx-auto"></div>
+    <p class="text-center text-xs text-gray-500 mt-6">🔵 Available &nbsp; 🔴 Sold | Click to visit brand</p>
   </section>
 
   <script>
-  const viewer = document.getElementById("viewerCount");
+    // Viewer Counter
+    const viewer = document.getElementById("viewerCount");
+    function updateViewerCount() {
+      const total = Math.floor(Math.random() * (17000 - 14500 + 1)) + 14500;
+      const us = Math.floor(total * 0.41);
+      const uk = Math.floor(total * 0.37);
+      const others = total - us - uk;
 
-  function updateViewerCount() {
-    const total = Math.floor(Math.random() * (17000 - 14500 + 1)) + 14500;
-    const us = Math.floor(total * 0.41);
-    const uk = Math.floor(total * 0.37);
-    const others = total - us - uk;
-
-    viewer.innerHTML = `🔥 Live Viewers: <strong>${total.toLocaleString()}</strong> &nbsp;|&nbsp; 
-    🇺🇸 US: <strong>${us.toLocaleString()}</strong> &nbsp;|&nbsp; 
-    🇬🇧 UK: <strong>${uk.toLocaleString()}</strong> &nbsp;|&nbsp; 
-    🌍 Others: <strong>${others.toLocaleString()}</strong>`;
-  }
-
-  updateViewerCount();
-  setInterval(updateViewerCount, 5000);
-  <script>
-  const pixelGrid = document.getElementById("pixelGrid");
-  const customers = [
-    { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
-    { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
-    { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
-    { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" }
-  ];
-
-  for (let i = 0; i < 1500; i++) {
-    const pixel = document.createElement("div");
-    pixel.className = "aspect-square flex items-center justify-center p-0.5";
-
-    if (Math.random() < 0.03) {
-      const customer = customers[Math.floor(Math.random() * customers.length)];
-      pixel.innerHTML = `
-        <a href="${customer.url}" target="_blank" rel="noopener noreferrer">
-          <img src="${customer.logo}" alt="Logo" class="w-full h-full object-contain glow" />
-        </a>`;
-    } else {
-      pixel.innerHTML = `<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>`;
+      viewer.innerHTML = `🔥 Live Viewers: <strong>${total.toLocaleString()}</strong> &nbsp;|&nbsp; 
+      🇺🇸 US: <strong>${us.toLocaleString()}</strong> &nbsp;|&nbsp; 
+      🇬🇧 UK: <strong>${uk.toLocaleString()}</strong> &nbsp;|&nbsp; 
+      🌍 Others: <strong>${others.toLocaleString()}</strong>`;
     }
+    updateViewerCount();
+    setInterval(updateViewerCount, 5000);
+  </script>
 
-    pixelGrid.appendChild(pixel);
-  }
-</script>
+  <script>
+    // Pixel Grid
+    const pixelGrid = document.getElementById("pixelGrid");
+    const customers = [
+      { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
+      { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
+      { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
+      { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" },
+      { logo: "https://logo.clearbit.com/notion.so", url: "https://notion.so" },
+      { logo: "https://logo.clearbit.com/fiverr.com", url: "https://fiverr.com" }
+    ];
+
+    for (let i = 0; i < 1500; i++) {
+      const pixel = document.createElement("div");
+      pixel.className = "pixel";
+
+      const inner = document.createElement("div");
+      inner.className = "pixel-inner";
+
+      if (Math.random() < 0.03) {
+        const customer = customers[Math.floor(Math.random() * customers.length)];
+        inner.innerHTML = `
+          <a href="${customer.url}" target="_blank" rel="noopener noreferrer">
+            <img src="${customer.logo}" alt="Logo" class="w-full h-full object-contain glow" />
+          </a>`;
+      } else {
+        inner.innerHTML = `<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>`;
+      }
+
+      pixel.appendChild(inner);
+      pixelGrid.appendChild(pixel);
+    }
+  </script>
 </body>
 </html>
