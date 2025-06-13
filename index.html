@@ -61,13 +61,23 @@
   </section>
 
   <script>
-    const viewer = document.getElementById("viewerCount");
-    function updateViewerCount() {
-      const count = Math.floor(Math.random() * (17000 - 12500 + 1)) + 12500;
-      viewer.innerText = `🔥 Live Viewers: ${count.toLocaleString()}`;
-    }
-    setInterval(updateViewerCount, 4000);
-    updateViewerCount();
+  const viewer = document.getElementById("viewerCount");
+
+  function updateViewerCount() {
+    const total = Math.floor(Math.random() * (17000 - 14500 + 1)) + 14500;
+    const us = Math.floor(total * 0.41);
+    const uk = Math.floor(total * 0.37);
+    const others = total - us - uk;
+
+    viewer.innerHTML = `🔥 Live Viewers: <strong>${total.toLocaleString()}</strong> &nbsp;|&nbsp; 
+    🇺🇸 US: <strong>${us.toLocaleString()}</strong> &nbsp;|&nbsp; 
+    🇬🇧 UK: <strong>${uk.toLocaleString()}</strong> &nbsp;|&nbsp; 
+    🌍 Others: <strong>${others.toLocaleString()}</strong>`;
+  }
+
+  updateViewerCount();
+  setInterval(updateViewerCount, 5000);
+  </script>
 
     const pixelGrid = document.getElementById("pixelGrid");
     const customers = [
