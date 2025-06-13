@@ -77,29 +77,31 @@
 
   updateViewerCount();
   setInterval(updateViewerCount, 5000);
-  </script>
+  <script>
+  const pixelGrid = document.getElementById("pixelGrid");
+  const customers = [
+    { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
+    { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
+    { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
+    { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" }
+  ];
 
-    const pixelGrid = document.getElementById("pixelGrid");
-    const customers = [
-      { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
-      { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
-      { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
-      { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" }
-    ];
+  for (let i = 0; i < 1500; i++) {
+    const pixel = document.createElement("div");
+    pixel.className = "aspect-square flex items-center justify-center p-0.5";
 
-    for (let i = 0; i < 1500; i++) {
-      const pixel = document.createElement("div");
-      pixel.className = "aspect-square flex items-center justify-center p-0.5";
-
-      if (Math.random() < 0.03) {
-        const customer = customers[Math.floor(Math.random() * customers.length)];
-        pixel.innerHTML = `<a href="${customer.url}" target="_blank" rel="noopener noreferrer" class="block w-full h-full glow hover:scale-110 transition-transform"><img src="${customer.logo}" alt="Logo" class="w-full h-full object-contain" /></a>`;
-      } else {
-        pixel.innerHTML = '<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>';
-      }
-
-      pixelGrid.appendChild(pixel);
+    if (Math.random() < 0.03) {
+      const customer = customers[Math.floor(Math.random() * customers.length)];
+      pixel.innerHTML = `
+        <a href="${customer.url}" target="_blank" rel="noopener noreferrer">
+          <img src="${customer.logo}" alt="Logo" class="w-full h-full object-contain glow" />
+        </a>`;
+    } else {
+      pixel.innerHTML = `<div class="w-full h-full bg-blue-900 hover:bg-blue-700 cursor-pointer transition-colors glow"></div>`;
     }
-  </script>
+
+    pixelGrid.appendChild(pixel);
+  }
+</script>
 </body>
 </html>
