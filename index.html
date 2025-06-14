@@ -3,47 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixelVault</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>PixelVault – Own a Piece of Digital History</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    .pixel:hover {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+  </style>
 </head>
-<body>
-  <nav class="navbar">
-    <h1 class="logo">PixelVault</h1>
-    <a href="#" class="connect-btn">Connect Wallet</a>
-  </nav>
-
-  <header class="hero">
-    <h2>Own a Piece of <span>Digital History</span></h2>
-    <p>Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
-    <a href="#" class="browse-btn">Browse All Pixels</a>
+<body class="text-white">
+  <header class="flex justify-between items-center p-6 bg-gray-900">
+    <h1 class="text-3xl font-bold text-pink-500">PixelVault</h1>
+    <a href="#" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded hover:opacity-90">Connect Wallet</a>
   </header>
 
-  <section class="grid-container">
-    <!-- Sample 12 tiles -->
-    <!-- You can expand this easily -->
-    <div class="pixel-card">
-      <img src="https://placehold.co/300x300/1e1e2f/ffffff?text=Pixel+1" alt="Pixel 1" />
-      <div class="info">
-        <h3>Pixel Block #0001</h3>
-        <p>Owner: 0x3f4a6b</p>
-        <p class="price">$1</p>
-      </div>
-    </div>
-
-    <div class="pixel-card">
-      <img src="https://placehold.co/300x300/1e1e2f/ffffff?text=Pixel+2" alt="Pixel 2" />
-      <div class="info">
-        <h3>Pixel Block #0002</h3>
-        <p>Owner: 0x7e2c1d</p>
-        <p class="price">$1</p>
-      </div>
-    </div>
-
-    <!-- Duplicate above cards with different numbers/images to add more -->
+  <section class="text-center py-12">
+    <h2 class="text-4xl font-bold">Own a Piece of <span class="text-green-400">Digital History</span></h2>
+    <p class="mt-4 text-lg text-gray-300">Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
+    <a href="#pixel-grid" class="mt-6 inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full hover:scale-105 transition">Browse All Pixels</a>
   </section>
 
-  <footer>
-    <p>© 2025 PixelVault. Built with 🎨 and ⚡.</p>
+  <section id="pixel-grid" class="p-4 max-w-7xl mx-auto">
+    <div class="grid grid-cols-40 gap-[1px]">
+      <!-- Pixels Start -->
+      <!-- We will generate 1000 blocks using JS -->
+    </div>
+  </section>
+
+  <footer class="text-center py-6 text-gray-500">
+    © 2025 PixelVault. All pixels are eternal.
   </footer>
+
+  <script>
+    const grid = document.querySelector('.grid');
+    for (let i = 1; i <= 1000; i++) {
+      const link = document.createElement('a');
+      link.href = 'https://your-purchase-link.com';
+      link.className = 'pixel block w-[15px] h-[15px] bg-gray-700 hover:bg-green-400 transition duration-200';
+      link.title = `Pixel ${i}`;
+      link.innerHTML = `<img src="https://placehold.co/15x15/000000/FFFFFF?text=" alt="Pixel ${i}" class="w-full h-full object-cover" />`;
+      grid.appendChild(link);
+    }
+  </script>
 </body>
 </html>
