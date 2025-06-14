@@ -2,77 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixelVault – Own a Piece of Digital History</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelVault</title>
   <style>
     body {
-      background-color: #0f172a;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f1123;
       color: white;
-      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
-    .pixel-grid {
-      display: grid;
-      grid-template-columns: repeat(40, 15px);
-      gap: 1px;
-      justify-content: center;
+    h1 {
+      font-size: 2em;
+      text-align: center;
     }
 
-    .pixel {
-      width: 15px;
-      height: 15px;
-      background-color: #1f2937;
-      transition: background 0.3s;
+    p {
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: 20px;
     }
 
-    .pixel:hover {
-      background-color: #22c55e;
-      transform: scale(1.1);
-      z-index: 10;
+    .button {
+      padding: 12px 24px;
+      background: linear-gradient(to right, #ff4da6, #7f66ff);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 30px;
     }
 
-    .pixel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    canvas {
+      border: 1px solid #444;
+      background-color: #1c1e2f;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      canvas {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
-<body class="text-white">
+<body>
+  <h1><span style="color:#ff4da6">Pixel</span><span style="color:#7f66ff">Vault</span></h1>
+  <p>Own a piece of <span style="color:#1ee1b3">Digital History</span><br>
+  Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
+  <button class="button" onclick="alert('Coming Soon')">Browse All Pixels</button>
 
-  <header class="flex justify-between items-center p-6 bg-gray-900">
-    <h1 class="text-3xl font-bold text-pink-500">PixelVault</h1>
-    <a href="#" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded hover:opacity-90">Connect Wallet</a>
-  </header>
+  <!-- Pixel Canvas -->
+  <canvas id="pixelCanvas" width="1000" height="100"></canvas>
 
-  <section class="text-center py-12">
-    <h2 class="text-4xl font-bold">Own a Piece of <span class="text-green-400">Digital History</span></h2>
-    <p class="mt-4 text-lg text-gray-300">Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
-    <a href="#pixel-grid" class="mt-6 inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full hover:scale-105 transition">Browse All Pixels</a>
-  </section>
-
-  <section id="pixel-grid" class="p-4 max-w-6xl mx-auto overflow-auto">
-    <div class="pixel-grid">
-      <!-- Pixel blocks inserted via JavaScript -->
-    </div>
-  </section>
-
-  <footer class="text-center py-6 text-gray-500">
-    © 2025 PixelVault. All pixels are eternal.
+  <footer>
+    &copy; 2025 PixelVault. All pixels are eternal.
   </footer>
 
   <script>
-    const grid = document.querySelector('.pixel-grid');
-    for (let i = 1; i <= 1000; i++) {
-      const link = document.createElement('a');
-      link.href = 'https://your-buy-link.com'; // Replace with real buy link
-      link.className = 'pixel block';
-      link.title = `Pixel ${i}`;
-      // Optional: Placeholder image if needed
-      // link.innerHTML = `<img src="https://placehold.co/15x15/000000/FFFFFF?text=" alt="Pixel ${i}" />`;
-      grid.appendChild(link);
+    const canvas = document.getElementById('pixelCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Draw 100,000 pixels (1000 x 100)
+    const cols = 1000;
+    const rows = 100;
+    const pixelSize = 1;
+
+    for (let i = 0; i < cols * rows; i++) {
+      const x = (i % cols) * pixelSize;
+      const y = Math.floor(i / cols) * pixelSize;
+      ctx.fillStyle = '#333'; // Default color
+      ctx.fillRect(x, y, pixelSize, pixelSize);
     }
+
+    // Optional: Clickable pixel logic (later enhancement)
+    // canvas.addEventListener('click', (e) => {
+    //   const rect = canvas.getBoundingClientRect();
+    //   const x = Math.floor((e.clientX - rect.left));
+    //   const y = Math.floor((e.clientY - rect.top));
+    //   console.log('Clicked pixel:', x, y);
+    // });
   </script>
 </body>
 </html>
