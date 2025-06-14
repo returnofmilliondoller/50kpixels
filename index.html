@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PixelVault</title>
+  <title>PixelVault – 100k Grid</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background-color: #0f1123;
+      font-family: 'Segoe UI', sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
@@ -19,28 +19,46 @@
     h1 {
       font-size: 2em;
       text-align: center;
+      margin-bottom: 10px;
     }
 
     p {
       text-align: center;
-      max-width: 600px;
       margin-bottom: 20px;
+      max-width: 600px;
     }
 
     .button {
-      padding: 12px 24px;
+      padding: 10px 24px;
       background: linear-gradient(to right, #ff4da6, #7f66ff);
-      color: white;
       border: none;
-      border-radius: 25px;
-      font-size: 16px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    canvas {
-      border: 1px solid #444;
-      background-color: #1c1e2f;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(1000, 6px);
+      grid-gap: 1px;
+      overflow: scroll;
+      max-width: 100%;
+      max-height: 70vh;
+      background-color: #222;
+      border: 2px solid #444;
+    }
+
+    .pixel {
+      width: 6px;
+      height: 6px;
+      background-color: #333;
+      cursor: pointer;
+    }
+
+    .pixel:hover {
+      background-color: #ff4da6;
     }
 
     footer {
@@ -50,9 +68,8 @@
     }
 
     @media (max-width: 600px) {
-      canvas {
-        width: 100%;
-        height: auto;
+      .grid {
+        grid-template-columns: repeat(100, 6px); /* mobile: scrollable smaller grid */
       }
     }
   </style>
@@ -60,39 +77,30 @@
 <body>
   <h1><span style="color:#ff4da6">Pixel</span><span style="color:#7f66ff">Vault</span></h1>
   <p>Own a piece of <span style="color:#1ee1b3">Digital History</span><br>
-  Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
+    Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
   <button class="button" onclick="alert('Coming Soon')">Browse All Pixels</button>
 
-  <!-- Pixel Canvas -->
-  <canvas id="pixelCanvas" width="1000" height="100"></canvas>
+  <div class="grid" id="pixelGrid"></div>
 
   <footer>
     &copy; 2025 PixelVault. All pixels are eternal.
   </footer>
 
   <script>
-    const canvas = document.getElementById('pixelCanvas');
-    const ctx = canvas.getContext('2d');
+    const pixelContainer = document.getElementById('pixelGrid');
+    const totalPixels = 100000;
 
-    // Draw 100,000 pixels (1000 x 100)
-    const cols = 1000;
-    const rows = 100;
-    const pixelSize = 1;
-
-    for (let i = 0; i < cols * rows; i++) {
-      const x = (i % cols) * pixelSize;
-      const y = Math.floor(i / cols) * pixelSize;
-      ctx.fillStyle = '#333'; // Default color
-      ctx.fillRect(x, y, pixelSize, pixelSize);
+    for (let i = 0; i < totalPixels; i++) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      pixel.title = `Pixel ${i + 1}`;
+      // You can add links here
+      pixel.onclick = () => {
+        alert(`Pixel ${i + 1} clicked`);
+        // Or redirect: window.location.href = "your-pixel-link-here";
+      };
+      pixelContainer.appendChild(pixel);
     }
-
-    // Optional: Clickable pixel logic (later enhancement)
-    // canvas.addEventListener('click', (e) => {
-    //   const rect = canvas.getBoundingClientRect();
-    //   const x = Math.floor((e.clientX - rect.left));
-    //   const y = Math.floor((e.clientY - rect.top));
-    //   console.log('Clicked pixel:', x, y);
-    // });
   </script>
 </body>
 </html>
