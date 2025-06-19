@@ -3,104 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PixelVault – 100k Grid</title>
+  <meta name="description" content="100,000 interactive pixels for brands, creators & memes. Inspired by the Million Dollar Homepage.">
+  <title>Return of Million Dollar Homepage – 100K Pixels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       margin: 0;
-      background-color: #0f1123;
-      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
     }
-
-    h1 {
-      font-size: 2em;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    p {
-      text-align: center;
-      margin-bottom: 20px;
-      max-width: 600px;
-    }
-
-    .button {
-      padding: 10px 24px;
-      background: linear-gradient(to right, #ff4da6, #7f66ff);
-      border: none;
-      border-radius: 20px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    .grid {
+    .pixel-grid {
       display: grid;
-      grid-template-columns: repeat(1000, 6px);
-      grid-gap: 1px;
-      overflow: scroll;
+      grid-template-columns: repeat(250, 1fr);
+      gap: 0;
+      width: 100%;
       max-width: 100%;
-      max-height: 70vh;
-      background-color: #222;
-      border: 2px solid #444;
+      overflow: auto;
     }
-
     .pixel {
-      width: 6px;
-      height: 6px;
-      background-color: #333;
-      cursor: pointer;
+      width: 4px;
+      height: 4px;
+      background-color: #1e3a8a;
     }
-
-    .pixel:hover {
-      background-color: #ff4da6;
+    .pixel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.8em;
-      color: #888;
+    .sold {
+      background-color: transparent;
     }
-
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: repeat(100, 6px); /* mobile: scrollable smaller grid */
-      }
+    .neon {
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #ff00ff;
     }
   </style>
 </head>
 <body>
-  <h1><span style="color:#ff4da6">Pixel</span><span style="color:#7f66ff">Vault</span></h1>
-  <p>Own a piece of <span style="color:#1ee1b3">Digital History</span><br>
-    Buy a pixel space. Add your logo. Link your site. Get seen. Forever.</p>
-  <button class="button" onclick="alert('Coming Soon')">Browse All Pixels</button>
 
-  <div class="grid" id="pixelGrid"></div>
+  <header class="text-center py-10">
+    <h1 class="text-4xl md:text-6xl font-bold neon mb-2">Return of Million Dollar Homepage</h1>
+    <p class="text-gray-300 text-sm md:text-base mb-6 px-4 max-w-xl mx-auto">
+      100,000 interactive pixels. Buy a spot, upload your logo, and be seen forever.
+    </p>
+    <a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" target="_blank"
+       class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
+      Buy Your Pixels Now
+    </a>
+    <p id="viewerCount" class="text-sm text-purple-400 mt-4"></p>
+  </header>
 
-  <footer>
-    &copy; 2025 PixelVault. All pixels are eternal.
+  <main class="overflow-x-auto px-2">
+    <div id="pixelGrid" class="pixel-grid"></div>
+  </main>
+
+  <footer class="text-center text-gray-500 text-sm py-6">
+    &copy; 2025 Return of Million Dollar Homepage — All rights reserved.
   </footer>
 
   <script>
-    const pixelContainer = document.getElementById('pixelGrid');
-    const totalPixels = 100000;
+    const pixelGrid = document.getElementById("pixelGrid");
+    const customers = [
+      { logo: "https://logo.clearbit.com/monday.com", url: "https://monday.com" },
+      { logo: "https://logo.clearbit.com/clickup.com", url: "https://clickup.com" },
+      { logo: "https://logo.clearbit.com/semrush.com", url: "https://semrush.com" },
+      { logo: "https://logo.clearbit.com/hubspot.com", url: "https://hubspot.com" }
+    ];
 
-    for (let i = 0; i < totalPixels; i++) {
-      const pixel = document.createElement('div');
-      pixel.className = 'pixel';
-      pixel.title = `Pixel ${i + 1}`;
-      // You can add links here
-      pixel.onclick = () => {
-        alert(`Pixel ${i + 1} clicked`);
-        // Or redirect: window.location.href = "your-pixel-link-here";
-      };
-      pixelContainer.appendChild(pixel);
+    for (let i = 0; i < 100000; i++) {
+      const div = document.createElement("div");
+      div.classList.add("pixel");
+
+      if (Math.random() < 0.01) {
+        const customer = customers[Math.floor(Math.random() * customers.length)];
+        div.classList.add("sold");
+        div.innerHTML = `<a href="${customer.url}" target="_blank" rel="noopener"><img src="${customer.logo}" alt="logo" /></a>`;
+      }
+
+      pixelGrid.appendChild(div);
     }
+
+    // Fake Viewer Counter
+    const viewer = document.getElementById("viewerCount");
+    function updateViewerCount() {
+      const total = Math.floor(Math.random() * (16500 - 12500 + 1)) + 12500;
+      const us = Math.floor(total * 0.42);
+      const uk = Math.floor(total * 0.35);
+      const others = total - us - uk;
+
+      viewer.innerHTML = `🔥 Live Viewers: ${total.toLocaleString()} | 🇺🇸 US: ${us.toLocaleString()} | 🇬🇧 UK: ${uk.toLocaleString()} | 🌍 Others: ${others.toLocaleString()}`;
+    }
+    setInterval(updateViewerCount, 5000);
+    updateViewerCount();
   </script>
+
 </body>
 </html>
