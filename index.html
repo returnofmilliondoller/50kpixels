@@ -2,84 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Return of the Million Dollar Homepage</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
+      background-color: #000;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: Arial, sans-serif;
     }
-    .cta-button {
-      background: #ffcc00;
-      color: #000;
-      padding: 1rem 2rem;
-      border: none;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-bottom: 2rem;
-      display: inline-block;
-    }
-    .pixel-grid {
-      display: grid;
-      grid-template-columns: repeat(100, 5px);
-      grid-template-rows: repeat(500, 5px);
-      gap: 0;
+    #pixelMapImage {
+      display: block;
+      margin: auto;
       max-width: 100%;
+      border: 2px solid #fff;
     }
-    .pixel {
-      width: 5px;
-      height: 5px;
-      background-color: #333;
+    .info {
+      text-align: center;
+      padding: 20px;
+    }
+    .info h1 {
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+    .info p {
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
 
-  <header style="text-align: center; padding: 1rem 0; background: #222; color: yellow;">
-    <h1 style="font-size: 2rem; color: yellow; font-family: 'Comic Sans MS', cursive;">
-      The Return of the Million Dollar Homepage™
-    </h1>
-    <div style="color: #fff; font-size: 0.9rem; margin-bottom: 0.5rem;">
-      50,000 pixels • $1.50 per pixel • Fund a dream with a pixel
-    </div>
-    <nav style="margin-bottom: 1rem;">
-      <a href="#buy" style="color: #0ff; margin: 0 10px; text-decoration: underline;">Buy Pixels</a>
-      <a href="#faq" style="color: #0ff; margin: 0 10px; text-decoration: underline;">FAQ</a>
-      <a href="#testimonials" style="color: #0ff; margin: 0 10px; text-decoration: underline;">Testimonials</a>
-      <a href="#contact" style="color: #0ff; margin: 0 10px; text-decoration: underline;">Contact</a>
-    </nav>
-    <a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" class="cta-button" target="_blank">
-      Buy a Pixel Now – $1.50
-    </a>
-  </header>
-
-  <div class="pixel-grid" id="pixelGrid">
-    <!-- JavaScript will fill this -->
+  <div class="info">
+    <h1>Own a Pixel. Be Part of Internet History.</h1>
+    <p>50,000 Pixels · $1.50 each · Forever on the Internet</p>
+    <p><a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" style="color:#00ffff; font-weight:bold;" target="_blank">👉 Buy Your Pixel Now</a></p>
   </div>
 
-  <footer style="text-align: center; padding: 2rem 1rem; font-size: 0.8rem; background: #111; color: #aaa;">
-    © 2025 Anderson Blake. All rights reserved.<br />
-    This project was created for fun & to help fund my Master’s degree.<br />
-    Inspired by the original Million Dollar Homepage.<br />
-    Not affiliated with any brands or companies displayed.
-  </footer>
+  <img src="your-pixel-wall-image.jpg" usemap="#pixelmap" id="pixelMapImage" alt="Pixel Grid">
 
-  <script>
-    const grid = document.getElementById('pixelGrid');
-    const totalPixels = 50000;
-    for (let i = 0; i < totalPixels; i++) {
-      const pixel = document.createElement('div');
-      pixel.classList.add('pixel');
-      grid.appendChild(pixel);
-    }
-  </script>
+  <map name="pixelmap">
+    <!-- Sample ad areas (10x10 pixel blocks) -->
+    <area shape="rect" coords="0,0,10,10" href="https://example.com" title="Your Ad Here">
+    <area shape="rect" coords="10,0,20,10" href="https://another.com" title="Cool Site">
+    <!-- Add more areas as ads get added -->
+  </map>
+
+  <div class="info" style="font-size: 12px; color: #aaa;">
+    <p>Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.<br>Contact: <a href="mailto:orbitonmedia@gmail.com" style="color: #ccc;">orbitonmedia@gmail.com</a></p>
+  </div>
+
 </body>
 </html>
