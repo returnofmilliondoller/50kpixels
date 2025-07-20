@@ -6,91 +6,74 @@
   <style>
     body {
       margin: 0;
+      background-color: #000;
       font-family: Arial, sans-serif;
-      background: #000;
       color: #fff;
       text-align: center;
     }
-
-    header {
-      padding: 20px;
-      background: #000;
-      border-bottom: 2px solid #222;
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
     }
-
-    header h1 {
-      color: #FFD700;
-      font-size: 1.8rem;
-      margin: 10px 0;
-    }
-
-    header p {
-      margin: 5px;
-      font-size: 1rem;
+    p {
       color: #ccc;
+      font-size: 1rem;
     }
-
     .cta-button {
-      display: inline-block;
-      background-color: #00ffff;
+      background: #ffcc00;
       color: #000;
-      padding: 10px 20px;
-      font-weight: bold;
-      margin: 15px 0;
-      border-radius: 5px;
+      padding: 12px 24px;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 20px 0;
     }
-
-    .pixel-grid {
-      display: grid;
-      grid-template-columns: repeat(250, 4px);
-      grid-template-rows: repeat(200, 4px);
-      gap: 0;
-      justify-content: center;
+    .grid-container {
+      position: relative;
+      width: 1000px;
+      height: 500px;
       margin: 20px auto;
-      max-width: 100%;
+      background-color: #111;
+      border: 2px solid #444;
     }
-
     .pixel {
-      width: 4px;
-      height: 4px;
-      background-color: #444;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
     }
-
-    footer {
+    .footer {
       padding: 20px;
+      color: #aaa;
       font-size: 0.9rem;
-      color: #999;
-      border-top: 2px solid #222;
     }
   </style>
 </head>
 <body>
+  <h1>Return of the Million Dollar Homepage</h1>
+  <p>Own a piece of internet history – place your ad, meme, or memory on our pixel wall!</p>
+  <a class="cta-button" href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" target="_blank">Buy a Pixel – $1.50</a>
 
-  <header>
-    <h1>Own a Pixel. Be Part of Internet History.</h1>
-    <p>50,000 Pixels · $1.50 each · Forever on the Internet</p>
-    <a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" class="cta-button" target="_blank">👉 Buy Your Pixel Now</a>
-  </header>
+  <div class="grid-container" id="pixelGrid">
+    <!-- Sample image: Dog (10x10 pixels) -->
+    <div class="pixel" style="left: 100px; top: 100px; width: 50px; height: 50px; background-image: url('https://i.imgur.com/B5oRHWY.jpg');" title="Doggo Ad"></div>
 
-  <div class="pixel-grid" id="pixelGrid">
-    <!-- Pixels will be added by JS -->
+    <!-- Meme (5x5 pixels) -->
+    <div class="pixel" style="left: 300px; top: 150px; width: 25px; height: 25px; background-image: url('https://i.imgur.com/qg5FbQH.jpg');" title="Meme"></div>
+
+    <!-- Logo (8x8 pixels) -->
+    <div class="pixel" style="left: 600px; top: 120px; width: 40px; height: 40px; background-image: url('https://i.imgur.com/r5pFg3f.png');" title="Logo Ad"></div>
+
+    <!-- Cat (6x6 pixels) -->
+    <div class="pixel" style="left: 750px; top: 300px; width: 30px; height: 30px; background-image: url('https://i.imgur.com/G4vM8gN.jpg');" title="Cat Ad"></div>
+
+    <!-- Placeholder (7x4 pixels) -->
+    <div class="pixel" style="left: 400px; top: 50px; width: 35px; height: 20px; background-image: url('https://i.imgur.com/UktLJvQ.jpg');" title="Ad Placeholder"></div>
   </div>
 
-  <footer>
-    Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.<br>
-    Contact: <a href="mailto:orbitonmedia@gmail.com">orbitonmedia@gmail.com</a>
-  </footer>
-
-  <script>
-    const grid = document.getElementById('pixelGrid');
-    const totalPixels = 50000;
-    for (let i = 0; i < totalPixels; i++) {
-      const pixel = document.createElement('div');
-      pixel.classList.add('pixel');
-      grid.appendChild(pixel);
-    }
-  </script>
-
+  <div class="footer">
+    Made with ❤️ by Anderson | All rights reserved<br>
+    Contact: <a href="mailto:orbitonmedia@gmail.com" style="color: #ffcc00;">orbitonmedia@gmail.com</a>
+  </div>
 </body>
 </html>
