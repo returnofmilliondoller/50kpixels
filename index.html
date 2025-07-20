@@ -6,48 +6,69 @@
   <style>
     body {
       margin: 0;
-      background-color: #000;
-      color: #fff;
+      background-color: black;
       font-family: Arial, sans-serif;
-    }
-    #pixelMapImage {
-      display: block;
-      margin: auto;
-      max-width: 100%;
-      border: 2px solid #fff;
-    }
-    .info {
+      color: white;
       text-align: center;
+    }
+    .header {
       padding: 20px;
     }
-    .info h1 {
-      margin-bottom: 10px;
+    .header h1 {
       color: #ffcc00;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
-    .info p {
+    .header p {
+      margin: 5px 0;
       font-size: 16px;
+    }
+    .buy-link {
+      color: cyan;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .pixel-wall {
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #fff;
+      max-width: 100%;
+      height: auto;
+    }
+    .footer {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 40px;
+      padding-bottom: 40px;
+    }
+    .footer a {
+      color: #ccc;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="info">
+  <div class="header">
     <h1>Own a Pixel. Be Part of Internet History.</h1>
     <p>50,000 Pixels · $1.50 each · Forever on the Internet</p>
-    <p><a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" style="color:#00ffff; font-weight:bold;" target="_blank">👉 Buy Your Pixel Now</a></p>
+    <p><a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" target="_blank" class="buy-link">👉 Buy Your Pixel Now</a></p>
   </div>
 
-  <img src="your-pixel-wall-image.jpg" usemap="#pixelmap" id="pixelMapImage" alt="Pixel Grid">
+  <!-- Replace with your actual uploaded pixel wall image -->
+  <img src="https://yourdomain.com/pixel-wall.jpg" usemap="#pixelmap" class="pixel-wall" alt="" />
 
   <map name="pixelmap">
-    <!-- Sample ad areas (10x10 pixel blocks) -->
-    <area shape="rect" coords="0,0,10,10" href="https://example.com" title="Your Ad Here">
-    <area shape="rect" coords="10,0,20,10" href="https://another.com" title="Cool Site">
-    <!-- Add more areas as ads get added -->
+    <!-- Example pixel ad blocks -->
+    <area shape="rect" coords="0,0,10,10" href="https://example.com" title="Example Ad">
+    <!-- Add more clickable ad blocks here -->
   </map>
 
-  <div class="info" style="font-size: 12px; color: #aaa;">
-    <p>Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.<br>Contact: <a href="mailto:orbitonmedia@gmail.com" style="color: #ccc;">orbitonmedia@gmail.com</a></p>
+  <div class="footer">
+    Made with ❤️ by Anderson.<br>
+    Inspired by the Original Million Dollar Homepage.<br>
+    Contact: <a href="mailto:orbitonmedia@gmail.com">orbitonmedia@gmail.com</a>
   </div>
 
 </body>
