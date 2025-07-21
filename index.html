@@ -1,122 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Return of the Million Dollar Homepage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     body {
       margin: 0;
-      background-color: black;
+      background: #000;
       font-family: Arial, sans-serif;
       color: white;
-    }
-
-    header {
       text-align: center;
-      padding: 1.5rem;
-      border-bottom: 1px solid #333;
     }
-
+    header {
+      background: #000;
+      padding: 20px 10px 10px;
+    }
     header h1 {
-      color: #FFD700;
-      margin-bottom: 0.5rem;
+      color: #ffcc00;
+      margin: 0;
+      font-size: 20px;
     }
-
     header p {
-      font-size: 1rem;
-      color: #ccc;
+      margin: 5px 0;
+      font-size: 14px;
     }
-
     .buy-button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 10px 20px;
       background: cyan;
       color: black;
       font-weight: bold;
-      text-decoration: none;
+      padding: 8px 15px;
+      border: none;
       border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
     }
-
-    .grid-container {
-      position: relative;
-      width: 500px;
-      height: 2500px;
-      margin: 30px auto;
-      background: #222;
+    .pixel-grid {
       display: grid;
       grid-template-columns: repeat(100, 5px);
       grid-template-rows: repeat(500, 5px);
-      gap: 0;
+      margin: 20px auto;
+      width: 500px;
+      height: 2500px;
+      background-color: #222;
+      position: relative;
     }
-
-    .pixel {
-      width: 5px;
-      height: 5px;
-      background-color: #333;
-    }
-
     .placed-image {
       position: absolute;
       background-size: cover;
-      background-position: center;
-      border: 1px solid #111;
+      background-repeat: no-repeat;
+      border: 1px solid #444;
     }
-
     footer {
-      text-align: center;
       padding: 20px;
-      font-size: 0.9rem;
-      color: #aaa;
+      font-size: 14px;
       border-top: 1px solid #333;
     }
-
     a {
-      color: cyan;
+      color: #00f0ff;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Own a Pixel. Be Part of Internet History.</h1>
     <p>50,000 Pixels · $1.50 each · Forever on the Internet</p>
-    <a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" target="_blank" class="buy-button">
-      👉 Buy Your Pixel Now
-    </a>
-  </header>
-
-  <div class="grid-container" id="pixelGrid">
-    <!-- Static demo placements -->
+    <a class="buy-button" href="#">👉 Buy Your Pixel Now</a>
+  </header>  <div class="pixel-grid">
+    <!-- Sample Ads: 5x5 grid placements -->
     <div class="placed-image" title="Dog Ad"
-      style="left: 100px; top: 100px; width: 25px; height: 25px;
-             background-image: url('https://i.postimg.cc/1RfwyZg1/dog-sample.jpg');"></div>
+      style="left: 100px; top: 100px; width: 25px; height: 25px; background-image: url('https://raw.githubusercontent.com/andersonhub/pixels/main/assets/dog1.jpg');"></div><div class="placed-image" title="Coffee Ad"
+  style="left: 200px; top: 400px; width: 25px; height: 25px; background-image: url('https://raw.githubusercontent.com/andersonhub/pixels/main/assets/coffee.jpg');"></div>
 
-    <div class="placed-image" title="Funny Meme"
-      style="left: 250px; top: 300px; width: 25px; height: 25px;
-             background-image: url('https://i.postimg.cc/7Lq1FKz8/meme.png');"></div>
+<div class="placed-image" title="Cat Ad"
+  style="left: 300px; top: 700px; width: 25px; height: 25px; background-image: url('https://raw.githubusercontent.com/andersonhub/pixels/main/assets/cat1.jpg');"></div>
 
-    <div class="placed-image" title="Logo Sample"
-      style="left: 400px; top: 200px; width: 40px; height: 40px;
-             background-image: url('https://i.postimg.cc/pXDpK2F5/logo-sample.png');"></div>
-  </div>
-
-  <footer>
-    Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.<br>
-    Contact: <a href="mailto:orbitonmedia@gmail.com">orbitonmedia@gmail.com</a>
+  </div>  <footer>
+    <p>Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.</p>
+    <p>Contact: <a href="mailto:orbitonmedia@gmail.com">orbitonmedia@gmail.com</a></p>
   </footer>
-
-  <script>
-    const gridContainer = document.getElementById('pixelGrid');
-
-    const totalPixels = 50000;
-    for (let i = 0; i < totalPixels; i++) {
-      const pixel = document.createElement('div');
-      pixel.className = 'pixel';
-      gridContainer.appendChild(pixel);
-    }
-  </script>
-
 </body>
 </html>
