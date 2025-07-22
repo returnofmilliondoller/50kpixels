@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Return of the Million Dollar Homepage</title>
+  <title>Million Dollar Homepage</title>
   <style>
     body {
       margin: 0;
@@ -14,104 +14,160 @@
       flex-direction: column;
       align-items: center;
     }
+
     header {
       text-align: center;
       padding: 2rem 1rem 1rem;
+      width: 100%;
     }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
       color: #ffcc00;
     }
+
     p.tagline {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #aaa;
       margin-bottom: 1rem;
     }
+
     .cta-button {
       background: #ffcc00;
       color: #000;
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       border: none;
       font-size: 1rem;
       font-weight: bold;
-      cursor: pointer;
       text-decoration: none;
       border-radius: 5px;
       margin-bottom: 1rem;
       display: inline-block;
     }
-    .thankyou-marquee {
-      background-color: #111;
-      color: #00ffcc;
-      padding: 10px;
-      font-size: 16px;
+
+    .marquee {
       width: 100%;
-      font-family: sans-serif;
+      overflow: hidden;
+      background-color: #111;
+      white-space: nowrap;
+      box-sizing: border-box;
+      padding: 0.5rem 0;
+      color: #00ffcc;
+      font-size: 1rem;
     }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 20s linear infinite;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .grid-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
     .pixel-grid {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(100, 5px);
       grid-template-rows: repeat(500, 5px);
       gap: 0;
-      max-width: 100%;
-      position: relative;
+      background-color: #111;
     }
+
     .pixel {
       width: 5px;
       height: 5px;
       background-color: #333;
     }
+
     .ad {
       position: absolute;
       background-size: cover;
       background-position: center;
+      border: 1px solid #444;
     }
+
     footer {
+      margin-top: 2rem;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.8rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Return of the Million Dollar Homepage</h1>
+    <h1>Million Dollar Homepage</h1>
     <p class="tagline">Buy a Pixel. Place Your Mark. Fund a Dream.</p>
-    <a href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" class="cta-button" target="_blank">
-      Buy a Pixel Now – $1.50
-    </a>
+    <a class="cta-button" href="https://orbiton4.gumroad.com/l/returnofmiliondollerhomrpage" target="_blank">👉 Buy a Pixel Now – $1.50</a>
   </header>
 
-  <div class="thankyou-marquee">
-    <marquee behavior="scroll" direction="left" scrollamount="4">
-      🎉 Thank you, Sarah! • 🙌 Thanks Mike! • 🚀 Welcome Jack! • 👏 Big shoutout to Emily! • ❤️ Appreciate you, Liam! • 👑 Thanks Ava! •
-    </marquee>
+  <div class="marquee">
+    <span>🚀 Welcome Jack! 👏 Big shoutout to Emily! ❤️ Thanks to Sam! 🌟 Lisa grabbed her spot! 🎉 More coming soon...</span>
   </div>
 
-  <div class="pixel-grid" id="pixelGrid">
-    <!-- JavaScript will fill this -->
-    <div class="ad" style="left: 100px; top: 150px; width: 25px; height: 25px; background-image: url('https://place-puppy.com/50x50');"></div>
-    <div class="ad" style="left: 300px; top: 400px; width: 25px; height: 25px; background-image: url('https://placekitten.com/50/50');"></div>
-    <div class="ad" style="left: 600px; top: 800px; width: 25px; height: 25px; background-image: url('https://placebear.com/50/50');"></div>
+  <div class="grid-container">
+    <div class="pixel-grid" id="pixelGrid">
+      <!-- Generate pixels -->
+      <script>
+        for (let i = 0; i < 50000; i++) {
+          const pixel = document.createElement("div");
+          pixel.className = "pixel";
+          document.getElementById("pixelGrid").appendChild(pixel);
+        }
+
+        // Add sample ads
+        const ads = [
+          {
+            x: 10,
+            y: 10,
+            w: 10,
+            h: 10,
+            img: "https://i.imgur.com/ZF6s192.png" // dog
+          },
+          {
+            x: 40,
+            y: 20,
+            w: 10,
+            h: 10,
+            img: "https://i.imgur.com/Qb8U2zX.png" // cat
+          },
+          {
+            x: 70,
+            y: 40,
+            w: 8,
+            h: 8,
+            img: "https://i.imgur.com/Ce3RbiU.png" // meme
+          }
+        ];
+
+        ads.forEach(ad => {
+          const adDiv = document.createElement("div");
+          adDiv.className = "ad";
+          adDiv.style.left = `${ad.x * 5}px`;
+          adDiv.style.top = `${ad.y * 5}px`;
+          adDiv.style.width = `${ad.w * 5}px`;
+          adDiv.style.height = `${ad.h * 5}px`;
+          adDiv.style.backgroundImage = `url(${ad.img})`;
+          document.getElementById("pixelGrid").appendChild(adDiv);
+        });
+      </script>
+    </div>
   </div>
 
   <footer>
-    Made with ❤️ by Anderson<br>
-    Help fund my Master’s degree one pixel at a time.<br>
-    Contact: orbitonmedia@gmail.com<br>
-    &copy; 2025 Return of the Million Dollar Homepage. All rights reserved.
+    <p>Made with ❤️ by Anderson. Inspired by the Original Million Dollar Homepage.</p>
+    <p>Contact: orbitonmedia@gmail.com</p>
   </footer>
-
-  <script>
-    const grid = document.getElementById('pixelGrid');
-    const totalPixels = 50000;
-    for (let i = 0; i < totalPixels; i++) {
-      const pixel = document.createElement('div');
-      pixel.classList.add('pixel');
-      grid.appendChild(pixel);
-    }
-  </script>
 </body>
-</html>
+                                                                                   </html>
